@@ -82,16 +82,36 @@ main {
     height: 75%;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;  
 
     border-width: 1px;
     border-style: solid;
     border-color: chartreuse;
 }
 
+#form-input-items {
+    display: flex;
+    justify-content: center;
+
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: black; */
+}
+
 #button-start-game {
 
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+#input-submit {
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-style: normal;
 }
 
 footer {
