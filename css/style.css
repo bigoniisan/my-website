@@ -287,21 +287,36 @@ button#css-button-test {
 
 aside#sidebar {
     position: fixed;
-    top: 0px;
-    right: 0px;
+    top: 40px;
+    right: 40px;
+
+    /* border-color: floralwhite;
+    border-width: 1px;
+    border-style: solid; */
 }
 
 section#sidebar-item {
 
 }
 
+#dropdown-menu-bar1, #dropdown-menu-bar2, #dropdown-menu-bar3 {
+    width: 35px;
+    height: 2px;
+    background-color: #7A7A7A;
+    margin-top: 6px;
+}
+
 button#sidebar-button {
-    color: red;
-    font-family: "Lato", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 44px;
+    height: 100px;
+    width: 100px;
+
+    color: white;
+    background-color: transparent;
+    /* border: none; */
+
+    /* border-color: floralwhite;
+    border-width: 1px;
+    border-style: solid; */
 }
 
 footer#footer {
