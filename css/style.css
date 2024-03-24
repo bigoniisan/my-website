@@ -97,6 +97,9 @@ button.navbar-item-button {
     font-style: normal;
     font-size: 12px;
 
+    position: relative;
+    z-index: 0;
+
     border: none;
     background-color: #313131;
     box-shadow: #222222;
@@ -106,6 +109,7 @@ button.navbar-item-button {
 
 }
 
+
 button.navbar-item-button:hover {
     /* h-offset v-offset blur spread color inset */
     box-shadow: 5px 10px 15px 0px rgba(0,0,0,0.24);
@@ -113,6 +117,56 @@ button.navbar-item-button:hover {
 
 button.navbar-item-button:active {
     box-shadow: 5px 10px 15px 0px rgba(0,0,0,0.24) inset;
+}
+
+button.navbar-item-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 50%;
+    opacity: 0.5;
+    
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+button.navbar-item-button:hover::before {
+    background-color: #686868;
+    transform: scaleX(1);
+    z-index: 1;
+}
+
+button.navbar-item-button::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 100%;
+    opacity: 0.5;
+    
+    transform: scaleX(0);
+    transform-origin: 100% 0;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+button.navbar-item-button:hover::after {
+    background-color: #686868;
+    transform: scaleX(1);
+    z-index: 1;
 }
 
 main {
@@ -178,22 +232,12 @@ li.project-list-card-container:hover{
 }
 
 div.project-card {
-    height: 0;
-    width: var(--project-list-card-width);
-
-    transition: transform 500ms;
-
-    /* background-color: #8A8A8A; */
-}
-
-div.project-card:hover {
-    transform: 50px;
-}
-
-div.project-card {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: relative;
+    z-index: 0;
 
     height: var(--project-card-height);
     width: var(--project-card-width);
@@ -201,7 +245,35 @@ div.project-card {
     border-color: red;
     border-width: 1px;
     border-style: solid;
+}
+
+div.project-card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: #121212;
+    opacity: 0.8;
     
+    transform: scaleY(0);
+    transform-origin: 0 0;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+div.project-card:hover {
+    /* transform:  */
+    /* background-color: #121212; */
+}
+
+div.project-card:hover:before {
+    transform: scaleY(1);
+    z-index: 1;
 }
 
 img.project-card-img {
@@ -214,7 +286,9 @@ button#css-button-test {
 }
 
 aside#sidebar {
-
+    position: fixed;
+    top: 0px;
+    right: 0px;
 }
 
 section#sidebar-item {
