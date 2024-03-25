@@ -1,8 +1,9 @@
 const buttons = document.getElementsByClassName("navbar-item-button");
 const projectList = document.getElementById("project-list");
 const projects = projectList.children;
-
 const showAllButton = document.getElementById("button-show-all");
+const filteredByText = document.getElementById("filtered-by-text");
+
 
 /**
  * 
@@ -26,9 +27,11 @@ function filterByTag(tag) {
             hideElement(projects[i]);
         }
     }
+    adjustFilterNumber(projectsWithTag.length);
     return projectsWithTag;
 }
 
+// TODO: add fade when showing and hiding elements
 function showElement(element) {
     element.style.display = "flex";
 }
@@ -37,20 +40,27 @@ function hideElement(element) {
     element.style.display = "none";
 }
 
+function adjustFilterNumber(value) {
+    if (value == 1) {
+        filteredByText.textContent = `Showing ${value} project. Use the filter to list them by skill or technology.`;
+    } else {
+        filteredByText.textContent = `Showing ${value} projects. Use the filter to list them by skill or technology.`;
+    }
+}
+
 function addButtonListeners() {
     // Show all button
     showAllButton.addEventListener("click", () => {
         for (let i = 0; i < projects.length; i++) {
             showElement(projects[i]);
         }
-    })
+        adjustFilterNumber(projects.length);
+    });
 
     // Other buttons
     for (let i = 1; i < buttons.length; i++) {
         buttons[i].addEventListener("click", () => {
-            // let projectsWithTag = filterByTag(buttons[i].textContent.toLocaleLowerCase());
-            console.log(filterByTag(buttons[i].textContent.toLocaleLowerCase()));
-    
+            filterByTag(buttons[i].textContent.toLocaleLowerCase());
         });
     }
     return true;
@@ -58,6 +68,7 @@ function addButtonListeners() {
 
 function main() {
     addButtonListeners();
+    adjustFilterNumber("all");
 };
 
 main();
