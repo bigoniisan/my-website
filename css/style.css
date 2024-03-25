@@ -27,6 +27,11 @@
     --project-card-height: 200px;
     --project-card-width: 200px;
 
+    --side-arrow-top-margin: calc(50vh - calc(var(--side-arrow-height) / 2));
+    --side-arrow-side-margin: 1vw;
+    --side-arrow-height: 380px;
+    --side-arrow-width: 10vw;
+
     --global-width: 70vw;
 }
 
@@ -299,21 +304,17 @@ img.project-card-img {
     max-height: 95px;
 }
 
-button#css-button-test {
+aside#sidebar-items {
     
-}
-
-aside#sidebar {
-    position: fixed;
-    top: 40px;
-    right: 40px;
-
     /* border-color: floralwhite;
     border-width: 1px;
     border-style: solid; */
 }
 
-section#sidebar-item {
+section#dropdown-menu {
+    position: fixed;
+    top: 40px;
+    right: 40px;
 
 }
 
@@ -330,11 +331,83 @@ button#sidebar-button {
 
     color: white;
     background-color: transparent;
-    /* border: none; */
+}
 
-    /* border-color: floralwhite;
+section#left-arrow-clickable-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: var(--side-arrow-top-margin);
+    left: var(--side-arrow-side-margin);
+
+    height: var(--side-arrow-height);
+    width: var(--side-arrow-width);
+
+    border-color: floralwhite;
     border-width: 1px;
-    border-style: solid; */
+    border-style: solid;
+}
+
+div#left-arrow-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    height: 50px;
+    width: 50px;
+
+    border-color: rebeccapurple;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#left-arrow {
+    border: solid #7A7A7A;
+    /* top right bottom left */
+    border-width: 2px 2px 0px 0px;
+    padding: 15px;
+    transform: rotate(-135deg);
+}
+
+section#right-arrow-clickable-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: var(--side-arrow-top-margin);
+    right: var(--side-arrow-side-margin);
+
+    height: var(--side-arrow-height);
+    width: var(--side-arrow-width);
+
+    border-color: floralwhite;
+    border-width: 1px;
+    border-style: solid;
+}
+
+div#right-arrow-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    height: 50px;
+    width: 50px;
+
+    border-color: rebeccapurple;
+    border-width: 1px;
+    border-style: solid;
+}
+
+
+#right-arrow {
+    border: solid #7A7A7A;
+    /* top right bottom left */
+    border-width: 2px 2px 0px 0px;
+    padding: 15px;
+    transform: rotate(45deg);
 }
 
 footer#footer {
