@@ -33,6 +33,7 @@
     --side-arrow-width: 10vw;
 
     --global-width: 70vw;
+    --global-dropdown-screen-zindex: 10;
 }
 
 body {
@@ -41,6 +42,75 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.dropdown-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    background-color: #333333;
+    height: 0vh;
+    width: 100vw;
+    z-index: var(--global-dropdown-screen-zindex);
+    transition: height 0.5s;
+}
+
+.dropdown-screen--show {
+    height: 100vh;
+}
+
+.dropdown-screen-links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    position: fixed;
+    background-color: #333333;
+    height: 0vh;
+    width: 50vw;
+    z-index: var(--global-dropdown-screen-zindex);
+    transition: height 0.5s;
+}
+
+.dropdown-screen-links-container--show {
+    height: 70vh;
+
+    border-color: green;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.dropdown-screen-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    background-color: #333333;
+    height: 0vh;
+    width: 50vw;
+    z-index: var(--global-dropdown-screen-zindex);
+    transition: height 0.5s, font-size 0.5s;
+
+    font-size: 0px;
+    text-decoration: none;
+    color: #5A5A5A;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}   
+
+.dropdown-screen-link--show {
+    height: 15vh;
+    font-size: 42px;
+
+    border-color: rebeccapurple;
+    border-width: 1px;
+    border-style: solid;
 }
 
 header#header {
@@ -289,11 +359,6 @@ div.project-card::before {
     transition-timing-function: ease-out;
 }
 
-div.project-card:hover {
-    /* transform:  */
-    /* background-color: #121212; */
-}
-
 div.project-card:hover:before {
     transform: scaleY(1);
     z-index: 1;
@@ -306,16 +371,13 @@ img.project-card-img {
 
 aside#sidebar-items {
     
-    /* border-color: floralwhite;
-    border-width: 1px;
-    border-style: solid; */
 }
 
 section#dropdown-menu {
     position: fixed;
     top: 40px;
     right: 40px;
-
+    z-index: 20;
 }
 
 #dropdown-menu-bar1, #dropdown-menu-bar2, #dropdown-menu-bar3 {

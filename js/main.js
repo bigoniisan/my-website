@@ -27,13 +27,11 @@ function filterByTag(tag) {
 
 function showElement(element) {
     element.style.display = "flex";
-    // element.style.animation = "fade-in 1s forwards";
 
 }
 
 function hideElement(element) {
     element.style.display = "none";
-    // element.style.animation = "fade-out 2s forwards";
 }
 
 function adjustFilterNumber(value) {
@@ -45,11 +43,22 @@ function adjustFilterNumber(value) {
     }
 }
 
+function toggleDropdown() {
+    const dropdownScreen = document.querySelector(".dropdown-screen");
+    const linksContainer = document.querySelector(".dropdown-screen-links-container");
+    const dropdownScreenLinks = document.getElementsByClassName("dropdown-screen-link");
+    // toggle in reverse order just in case performance affects animation order lmao
+    for (let i = 0; i < dropdownScreenLinks.length; i++) {
+        dropdownScreenLinks[i].classList.toggle("dropdown-screen-link--show");
+    }
+    linksContainer.classList.toggle("dropdown-screen-links-container--show");
+    dropdownScreen.classList.toggle("dropdown-screen--show");
+}
+
 function addButtonListeners() {
-    const buttons = document.getElementsByClassName("navbar-item-button");
-    const projects = document.getElementById("project-list").children;
     // Show all button
     const showAllButton = document.getElementById("button-show-all");
+    const projects = document.getElementById("project-list").children;
     showAllButton.addEventListener("click", () => {
         for (let i = 0; i < projects.length; i++) {
             showElement(projects[i]);
@@ -58,17 +67,22 @@ function addButtonListeners() {
     });
 
     // Other buttons
+    const buttons = document.getElementsByClassName("navbar-item-button");
     for (let i = 1; i < buttons.length; i++) {
         buttons[i].addEventListener("click", () => {
             filterByTag(buttons[i].textContent.toLocaleLowerCase());
         });
     }
-    return true;
+
+    // Dropdown menu
+    const dropdownMenu = document.getElementById("dropdown-menu");
+    dropdownMenu.addEventListener("click", () => { 
+        toggleDropdown();
+    });
 }
 
 function main() {
     addButtonListeners();
-    adjustFilterNumber("all");
 };
 
 main();
